@@ -10,7 +10,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   */
 object ImageClassification_DT {
   def main(args: Array[String]) {
-    val IMAGE_CATEGORIES = Array("Girl", "Object2")
+    val IMAGE_CATEGORIES = Array("Object1", "Object2")
     System.setProperty("hadoop.home.dir", "C:\\winutils")
     //    Logger.getLogger("org").setLevel(Level.ERROR)
     //    Logger.getLogger("akka").setLevel(Level.ERROR)
@@ -72,7 +72,7 @@ object ImageClassification_DT {
     val y = prediction1.map(f => {
       (f._1, f._3.toDouble)
     })
-println("Sample")
+
     y.collect().foreach(println(_))
 
     val metrics = new MulticlassMetrics(y)

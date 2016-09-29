@@ -42,8 +42,8 @@ public class ObjectDetection {
 class ObjectMainDetection {
     private ConsistentLocalFeatureMatcher2d<Keypoint> matcher1;
     private ConsistentLocalFeatureMatcher2d<Keypoint> matcher2;
-    private ConsistentLocalFeatureMatcher2d<Keypoint> matcher3;
-    private ConsistentLocalFeatureMatcher2d<Keypoint> matcher4;
+   private ConsistentLocalFeatureMatcher2d<Keypoint> matcher3;
+   private ConsistentLocalFeatureMatcher2d<Keypoint> matcher4;
     private ConsistentLocalFeatureMatcher2d<Keypoint> matcher5;
     final DoGSIFTEngine engine;
 //    private RenderMode renderMode = RenderMode.SQUARE;
@@ -125,43 +125,43 @@ class ObjectMainDetection {
                 }
 
             }
-//            if (this.matcher2.findMatches(kpl)
-//                    && ((MatrixTransformProvider) this.matcher2.getModel()).getTransform().cond() < 1e6 ) {
-//                try {
-//                    final Matrix boundsToPoly = ((MatrixTransformProvider) this.matcher2.getModel()).getTransform()
-//                            .inverse();
-//
-//                    renderer.drawShape(this.modelImage2.getBounds().transform(boundsToPoly), 3, RGBColour.RED);
-//
-//                    if(count2 <= 10){
-//                        if (modelImage2.getBounds().transform(boundsToPoly).isConvex()) {
-//                            List<Point2d> vertices = this.modelImage2.getBounds().transform(boundsToPoly).asPolygon().getVertices();
-//                            int x[] = new int[4], y[] = new int[4];
-//                            for (int i = 0; i < vertices.size(); i++) {
-//                                x[i] = (int) vertices.get(i).getX();
-//                                y[i] = (int) vertices.get(i).getY();
-//                            }
-//                            Polygon polygon = new Polygon(x, y, 4);
-//                            for (int i = 0; i < kpl.size(); i++) {
-//                                if (polygon.contains(kpl.get(i).getX(), kpl.get(i).getY())) {
-//                                    double c[] = kpl.get(i).getFeatureVector().asDoubleVector();
-//                                    bw.write("1,");
-//                                    for (int j = 0; j < c.length; j++) {
-//                                        bw.write(c[j] + " ");
-//                                    }
-//                                    bw.newLine();
-//                                }
-//                            }
-//
-//                            count2++;
-//                    }
-//
-//                    }
-//                } catch (Exception e) {
-//                    System.out.println(e.getMessage());
-//                }
-//
-//            }
+            if (this.matcher2.findMatches(kpl)
+                    && ((MatrixTransformProvider) this.matcher2.getModel()).getTransform().cond() < 1e6 ) {
+                try {
+                    final Matrix boundsToPoly = ((MatrixTransformProvider) this.matcher2.getModel()).getTransform()
+                            .inverse();
+
+                    renderer.drawShape(this.modelImage2.getBounds().transform(boundsToPoly), 3, RGBColour.RED);
+
+                    if(count2 <= 10){
+                        if (modelImage2.getBounds().transform(boundsToPoly).isConvex()) {
+                            List<Point2d> vertices = this.modelImage2.getBounds().transform(boundsToPoly).asPolygon().getVertices();
+                            int x[] = new int[4], y[] = new int[4];
+                            for (int i = 0; i < vertices.size(); i++) {
+                                x[i] = (int) vertices.get(i).getX();
+                                y[i] = (int) vertices.get(i).getY();
+                            }
+                            Polygon polygon = new Polygon(x, y, 4);
+                            for (int i = 0; i < kpl.size(); i++) {
+                                if (polygon.contains(kpl.get(i).getX(), kpl.get(i).getY())) {
+                                    double c[] = kpl.get(i).getFeatureVector().asDoubleVector();
+                                    bw.write("1,");
+                                    for (int j = 0; j < c.length; j++) {
+                                        bw.write(c[j] + " ");
+                                    }
+                                    bw.newLine();
+                                }
+                            }
+
+                            count2++;
+                    }
+
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+
+            }
 //            if (this.matcher3.findMatches(kpl)
 //                    && ((MatrixTransformProvider) this.matcher3.getModel()).getTransform().cond() < 1e6) {
 //                try {
@@ -286,9 +286,9 @@ class ObjectMainDetection {
         engine.getOptions().setDoubleInitialImage(true);
 
         try {
-            modelImage1 = ImageUtilities.readMBF(new File("data/Girl.jpg"));
-            //modelImage2 = ImageUtilities.readMBF(new File("data/2.jpg"));
-//            //modelImage3 = ImageUtilities.readMBF(new File("data/3.jpg"));
+            modelImage1 = ImageUtilities.readMBF(new File("data/Object1.jpg"));
+           modelImage2 = ImageUtilities.readMBF(new File("data/Object2.jpg"));
+//            modelImage3 = ImageUtilities.readMBF(new File("data/3.jpg"));
 //            modelImage4 = ImageUtilities.readMBF(new File("data/4.jpg"));
 //            modelImage5 = ImageUtilities.readMBF(new File("data/5.jpg"));
         } catch (IOException e) {
@@ -298,8 +298,8 @@ class ObjectMainDetection {
         FImage modelF1 = Transforms.calculateIntensityNTSC(modelImage1);
         this.matcher1.setModelFeatures(engine.findFeatures(modelF1));
 
-//        FImage modelF2 = Transforms.calculateIntensityNTSC(modelImage2);
-//        this.matcher2.setModelFeatures(engine.findFeatures(modelF2));
+        FImage modelF2 = Transforms.calculateIntensityNTSC(modelImage2);
+        this.matcher2.setModelFeatures(engine.findFeatures(modelF2));
 //
 //        FImage modelF3 = Transforms.calculateIntensityNTSC(modelImage3);
 //        this.matcher3.setModelFeatures(engine.findFeatures(modelF3));

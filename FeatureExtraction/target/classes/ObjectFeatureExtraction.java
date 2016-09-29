@@ -14,7 +14,7 @@ public class ObjectFeatureExtraction {
         String inputFolder = "data/";
         String inputImage = "Object2.jpg";
         String outputFolder = "output/";
-        String[] IMAGE_CATEGORIES = {"Girl", "Object2", "SeaLion", "Swan", "Beaver"};
+        String[] IMAGE_CATEGORIES = {"Object1", "Object2"};
         int input_class = 1;
         MBFImage mbfImage = ImageUtilities.readMBF(new File(inputFolder + inputImage));
         DoGSIFTEngine doGSIFTEngine = new DoGSIFTEngine();
