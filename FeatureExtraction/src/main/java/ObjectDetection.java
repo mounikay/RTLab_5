@@ -96,8 +96,8 @@ class ObjectMainDetection {
                     if (modelImage1.getBounds().transform(boundsToPoly).isConvex()) {
 
                         renderer.drawShape(this.modelImage1.getBounds().transform(boundsToPoly), 3, RGBColour.RED);
-                        renderer.drawText("Object1", ((int) (this.modelImage2.getBounds().transform(boundsToPoly).minX() +  this.modelImage2.getBounds().transform(boundsToPoly).maxX())/2), ((int) (this.modelImage2.getBounds().transform(boundsToPoly).minY() +
-                            this.modelImage2.getBounds().transform(boundsToPoly).maxY())/2), HersheyFont.ASTROLOGY, 20, RGBColour.GREEN);
+                        renderer.drawText("Object1", ((int) (this.modelImage1.getBounds().transform(boundsToPoly).minX() +  this.modelImage1.getBounds().transform(boundsToPoly).maxX())/2), ((int) (this.modelImage1.getBounds().transform(boundsToPoly).minY() +
+                            this.modelImage1.getBounds().transform(boundsToPoly).maxY())/2), HersheyFont.ASTROLOGY, 20, RGBColour.GREEN);
 
                         if(count1 <= 10){
                             List<Point2d> vertices = this.modelImage1.getBounds().transform(boundsToPoly).asPolygon().getVertices();
